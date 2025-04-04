@@ -14,7 +14,6 @@
       margin: 0;
       text-align: center;
       font-family: Arial, sans-serif;
-      background-color: rgba(255, 255, 255, 0.7);
       overflow: hidden;
       position: relative;
     }
@@ -50,6 +49,16 @@
       font-size: 48px;
       font-weight: bold;
       color: #3c4a5a;
+      min-height: 1em;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid #3c4a5a;
+      animation: blink 0.8s step-end infinite;
+    }
+
+    @keyframes blink {
+      from, to { border-color: transparent }
+      50% { border-color: #3c4a5a; }
     }
 
     .snowflake {
@@ -77,10 +86,24 @@
     <div class="icon-wrapper">
       <img class="icon" src="https://cdn.discordapp.com/avatars/1200020060308254814/580b2079c8a5fcb118c4495bc1062e01.png?size=1024" alt="アイコン">
     </div>
-    <div class="name">Dev.tomoaki</div>
+    <div class="name" id="name"></div>
   </div>
 
   <script>
+    const nameElement = document.getElementById("name");
+    const text = "Dev.tomoaki";
+    let index = 0;
+
+    function typeWriter() {
+      if (index < text.length) {
+        nameElement.textContent += text.charAt(index);
+        index++;
+        setTimeout(typeWriter, 150);
+      }
+    }
+
+    typeWriter();
+
     const createSnowflake = () => {
       const snowflake = document.createElement("div");
       snowflake.className = "snowflake";
