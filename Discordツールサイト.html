@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>profile</title>
+  <style>
+    body {
+      background: url('https://fieldpro.jp/wp-content/uploads/2023/04/f00fa741e0cb0dd19a8c04fcbaa68e9d.jpg') no-repeat center center/cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+      font-family: Arial, sans-serif;
+      background-color: rgba(255, 255, 255, 0.7);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      border-radius: 10px;
+      z-index: 1;
+    }
+
+    .icon-wrapper {
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      border: 8px solid rgba(0, 0, 0, 0.3);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .icon {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .name {
+      margin-top: 20px;
+      font-size: 48px;
+      font-weight: bold;
+      color: #3c4a5a;
+    }
+
+    .snowflake {
+      position: absolute;
+      top: -2em;
+      color: white;
+      font-size: 24px;
+      animation: fall linear infinite;
+      opacity: 0.8;
+      pointer-events: none;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(0) rotate(0deg);
+      }
+      100% {
+        transform: translateY(110vh) rotate(360deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="icon-wrapper">
+      <img class="icon" src="https://cdn.discordapp.com/avatars/1200020060308254814/580b2079c8a5fcb118c4495bc1062e01.png?size=1024" alt="アイコン">
+    </div>
+    <div class="name">Dev.tomoaki</div>
+  </div>
+
+  <script>
+    const createSnowflake = () => {
+      const snowflake = document.createElement("div");
+      snowflake.className = "snowflake";
+      snowflake.textContent = "❄";
+
+      const size = Math.random() * 20 + 10;
+      snowflake.style.fontSize = `${size}px`;
+
+      snowflake.style.left = `${Math.random() * window.innerWidth}px`;
+      snowflake.style.animationDuration = `${Math.random() * 5 + 5}s`;
+
+      document.body.appendChild(snowflake);
+
+      setTimeout(() => {
+        snowflake.remove();
+      }, 10000);
+    };
+
+    setInterval(createSnowflake, 200);
+  </script>
+</body>
+</html>
